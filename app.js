@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 
-
     $("form").submit(function(event) {
         event.preventDefault();
 
@@ -14,7 +13,9 @@ $(document).ready(function() {
         // console.log(request);
         $.getJSON("https://www.googleapis.com/youtube/v3/search", request).done(function(results) {
             $.each(results.items, function(index, item) {
-                $(".results").append(item.snippet.thumbnails.medium.url + "<br>" + item.snippet.title);
+
+                $(".results").append("<img src=\"" + item.snippet.thumbnails.medium.url + "\" style=\"default\""
+                    + "<br>" + "<h3>" + item.snippet.title +"</h3>");
             });
 
         }).fail(function(data) {
